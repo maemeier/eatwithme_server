@@ -10,8 +10,8 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 // app.get('/api/messages', require('./controllers/get_messages'))
-// app.get('/api/user', require('./controllers/get_user'))
-// // app.post('/api/signup', require('./controllers/signup'))
+app.get('/api/user', require('./controllers/get_user'))
+
 
 app.post('/api/login', require('./controllers/login'))
 app.post('/api/signup', require('./controllers/signup'))

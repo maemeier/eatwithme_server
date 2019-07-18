@@ -1,4 +1,4 @@
-const db_event = require('../models/event')
+const db_message = require('../models/event')
 
 module.exports = (req,res)=>{
   // res.send('Hello Slack')
