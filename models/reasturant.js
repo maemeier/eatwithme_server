@@ -3,9 +3,6 @@ const mongoose = require('mongoose')
 
 // schema
 const db_restaurant = db.model('restaurant',{
-  author:{
-    type: String,
-  },
   title:{
     type: String,
   },
@@ -15,8 +12,20 @@ const db_restaurant = db.model('restaurant',{
   address:{
     type: String,
   },
+  tell:{
+    type: String,
+  },
   price:{
-    type: Number,
+    type: String,
+  },
+  image:{
+    type: String,
+  },
+  city:{
+    type: String,
+  },
+  country: {
+    type: String
   }
 
 })

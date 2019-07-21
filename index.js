@@ -19,6 +19,7 @@ app.post('/api/signup', require('./controllers/signup'))
 app.post('/api/event', require('./controllers/post_event'))
 app.get('/api/getEvent', require('./controllers/get_event'))
 
+app.post('/api/restaurant', require('./controllers/post_restaurant'))
 
 
 app.listen(process.env.PORT,(err)=>{

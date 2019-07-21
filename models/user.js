@@ -15,5 +15,6 @@ const db_user = db.model('user',{
       type: String,
       require:[true, 'Email is required']
     }
+    // admin
   })
 module.exports = db_user

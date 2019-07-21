@@ -25,6 +25,14 @@ const db_event = db.model('event',{
   person:{
     type: Number,
     required:[true, 'Number of person is requried']
+  },
+  image:{
+    type: String,
+    required:[true, 'Number of person is requried']
+  },
+  city:{
+    type: String,
+    required:[true, 'Number of person is requried']
   }
 
 })
