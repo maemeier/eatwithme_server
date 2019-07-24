@@ -16,7 +16,7 @@ const db_event = db.model('event',{
   },
   date:{
     type: Date,
-    default: Date.now()
+    // default: Date.now()
   },
   time:{
     type: String,
