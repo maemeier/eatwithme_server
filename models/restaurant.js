@@ -23,7 +23,7 @@ const db_restaurant = db.model('restaurant',{
   price:{
     type: String,
   },
-  image:{
+  file:{
     type: String,
   },
   city:{

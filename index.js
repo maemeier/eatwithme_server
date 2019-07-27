@@ -21,6 +21,7 @@ app.post('/api/signup', require('./controllers/signup'))
 // app.post('/api/event',multer({ storage: multer.memoryStorage() }).single('file'), require('./controllers/post_event'))
 app.post('/api/event', require('./controllers/post_event'))
 app.get('/api/getEvent', require('./controllers/get_event'))
+app.patch('/api/getEvent/:id', require('./controllers/patch_event'))
 
 app.post('/api/restaurant', require('./controllers/post_restaurant'))
 app.get('/api/getRestaurant', require('./controllers/get_restaurant'))

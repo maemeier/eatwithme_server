@@ -6,7 +6,7 @@ const db_event = db.model('event',{
   author:{
     type: String,
     ref: "user",
-    
+
   },
   title:{
     type: String,
@@ -33,6 +33,10 @@ const db_event = db.model('event',{
   city:{
     type: String,
 
+  },
+  likes: {
+    type: Number,
+    default: 0,
   }
 
 })
