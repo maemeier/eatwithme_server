@@ -12,14 +12,14 @@ app.use(bodyParser.json())
 
 // app.get('/api/messages', require('./controllers/get_messages'))
 app.get('/api/user', require('./controllers/get_user'))
-app.get('/api/anUser', require('./controllers/get_anUser'))
+app.get('/api/anUser:id', require('./controllers/get_anUser'))
 
 
 app.post('/api/login', require('./controllers/login'))
 app.post('/api/signup', require('./controllers/signup'))
 
-// app.post('/api/event',multer({ storage: multer.memoryStorage() }).single('file'), require('./controllers/post_event'))
-app.post('/api/event', require('./controllers/post_event'))
+app.post('/api/restaurant',multer({ storage: multer.memoryStorage() }).single('file'), require('./controllers/post_restaurant'))
+// app.post('/api/event', require('./controllers/post_event'))
 app.get('/api/getEvent', require('./controllers/get_event'))
 app.patch('/api/getEvent/:id', require('./controllers/patch_event'))
 
