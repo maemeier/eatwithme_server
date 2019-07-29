@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
 module.exports = (req, res) => {
-  console.log(req.body);
+  console.log('i like cats',req.body);
   // create signup
   bcrypt.hash(req.body.password, 10, (err, encrypted) => {
     if (err) {

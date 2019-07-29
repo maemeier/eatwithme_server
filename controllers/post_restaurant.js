@@ -54,7 +54,8 @@ module.exports = (req, res) => {
 	// token
 	let token = req.headers.authorization.split(' ')[1]
 	console.log('token', token);
-	console.log('req',req.body);
+	console.log('req.body',req.body);
+	console.log('req.file', req.file);
 	jwt.verify(token, process.env.SECRET, (err, decoded) => {
 		if (err) {
 			console.log('err', err);

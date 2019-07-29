@@ -12,7 +12,7 @@ app.use(bodyParser.json())
 
 // app.get('/api/messages', require('./controllers/get_messages'))
 app.get('/api/user', require('./controllers/get_user'))
-app.get('/api/anUser:id', require('./controllers/get_anUser'))
+app.get('/api/profile', require('./controllers/get_anUser'))
 
 
 app.post('/api/login', require('./controllers/login'))
