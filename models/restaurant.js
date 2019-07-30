@@ -1,39 +1,37 @@
-const db = require('../db')
-const mongoose = require('mongoose')
+const db = require("../db");
+const mongoose = require("mongoose");
 
 // schema
-const db_restaurant = db.model('restaurant',{
-  author:{
+const db_restaurant = db.model("restaurant", {
+  author: {
     type: String,
     ref: "user",
-    required:[true, 'Author is required']
+    required: [true, "Author is required"]
   },
-  title:{
-    type: String,
+  title: {
+    type: String
   },
-  body:{
-    type: String,
+  body: {
+    type: String
   },
-  address:{
-    type: String,
+  address: {
+    type: String
   },
-  tel:{
-    type: String,
+  tel: {
+    type: String
   },
-  price:{
-    type: String,
+  price: {
+    type: String
   },
-  file:{
-    type: String,
+  file: {
+    type: String
   },
-  city:{
-    type: String,
+  city: {
+    type: String
   },
   country: {
     type: String
   }
+});
 
-
-})
-
-module.exports = db_restaurant
+module.exports = db_restaurant;
