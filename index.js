@@ -22,7 +22,7 @@ app.post(
   multer({ storage: multer.memoryStorage() }).single("file"),
   require("./controllers/post_restaurant")
 );
-// app.post('/api/event', require('./controllers/post_event'))
+app.post("/api/event", require("./controllers/post_event"));
 app.get("/api/getEvent", require("./controllers/get_event"));
 app.patch("/api/events/:id", require("./controllers/patch_event"));
 
