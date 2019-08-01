@@ -31,6 +31,10 @@ const db_event = db.model("event", {
     type: String,
     required: true
   },
+  country: {
+    type: String,
+    required: true
+  },
   likes: {
     type: Number,
     default: 0
