@@ -9,26 +9,27 @@ const db_event = db.model("event", {
     required: [true, "Event Author is required"]
   },
   title: {
-    type: String
+    type: String,
+    required: true
   },
   body: {
     type: String
   },
-  date: {
-    type: Date
-  },
-  time: {
-    type: String,
-    required: [true, "Time is requried"]
+  datetime: {
+    type: Date,
+    required: true
   },
   person: {
-    type: Number
+    type: Number,
+    required: true
   },
-  image: {
-    type: String
+  file: {
+    type: String,
+    default: "https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg"
   },
   city: {
-    type: String
+    type: String,
+    required: true
   },
   likes: {
     type: Number,
