@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 
 module.exports = (req, res) => {
   console.log("req.params", req.params);
+
   console.log("req.headers", req.headers);
 
   // go to database and find event
@@ -20,6 +21,7 @@ module.exports = (req, res) => {
           let foundGuest = event.guests.find(g => g == decoded._id);
           if (foundGuest) {
             console.log("foundGuest", foundGuest);
+
             res.send(event);
           } else {
             event.guests.push(decoded._id);
