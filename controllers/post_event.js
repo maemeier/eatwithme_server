@@ -21,15 +21,17 @@ cloudinary.config({
 
 const upload_file = file => {
   return new Promise(function(resolve, reject) {
+		console.log("uplode file", file);
     let uri = create_uri(file).content;
+		console.log("uri" , uri);
     cloudinary.uploader
       .upload(uri)
-      .then(saved => {
+      .then((saved) => {
         console.log("saved", saved);
         resolve(saved);
       })
       .catch(err => {
-        console.log("err", err);
+        console.log("err upload file", err);
         reject(err);
       });
   });
@@ -37,6 +39,7 @@ const upload_file = file => {
 
 const create_event = body => {
   return new Promise(function(resolve, reject) {
+		console.log('~~~~ body', body);
     db_event
       .create(body)
       .then(data => {
@@ -48,6 +51,7 @@ const create_event = body => {
             select: "name email"
           })
           .then(event => {
+						console.log("then event", event);
             resolve(event);
           })
           .catch(err => {
@@ -66,8 +70,11 @@ module.exports = (req, res) => {
     if (decoded) {
       console.log("decoded", decoded);
       req.body.author = decoded._id;
+			console.log("req body author", req.body.author);
       req.body.guests = [];
+			console.log("req body guests", req.body.guests);
       req.body.guests.push(decoded._id);
+			console.log("req body guests ", req.body.guests);
       // file
       if (req.file && req.file != null) {
         console.log("file", req.file);
@@ -92,7 +99,7 @@ module.exports = (req, res) => {
       } else {
         // event no file
         delete req.body.file;
-        console.log("req.body", req.body);
+        console.log("req.body with no file", req.body);
         create_event(req.body)
           .then(event => {
             res.send(event);
