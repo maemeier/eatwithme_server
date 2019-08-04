@@ -36,6 +36,8 @@ app.get("/api/getRestaurant", require("./controllers/get_restaurant"));
 app.get("/api/getanEvent/:id", require("./controllers/get_anEvent"));
 app.get("/api/getanRestaurant/:id", require("./controllers/get_anRestaurant"));
 
+app.get("/api/getuserevents", require("./controllers/get_user_events"));
+
 app.listen(process.env.PORT, err => {
   if (err) {
     console.log("ERROR", err);
