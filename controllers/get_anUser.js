@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 module.exports = (req, res) => {
   let token = req.headers.authorization.split(" ")[1];
   jwt.verify(token, process.env.SECRET, (err, decoded) => {
-    console.log("decoded", decoded);
+    console.log("decoded get_anUser", decoded);
     db_user
       .findById(decoded._id)
       .select({ name: 1, email: 1 })
