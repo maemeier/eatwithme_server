@@ -15,7 +15,7 @@ module.exports = (req,res)=>{
 				path: 'author',
 				select: 'name email'
 			}).then((data)=>{
-				console.log('data',data);
+				console.log('data',data.guests);
 				//to populate guests names, do another find for users with the ids of the guests in a map to get the names and then send the names with the data.
 				//for each loop of events to find where author === decoded id then push to an array
 				//for each loop of events where guest === decoded id then push to the same array
