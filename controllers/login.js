@@ -11,8 +11,8 @@ module.exports = (req, res) => {
 			bcrypt.compare(req.body.password, user.password, (err, match) => {
 				if (match) {
 					// 4. If passwords match, res OK
-					
-          let token = jwt.sign(user.toObject(), 'fyni')
+
+          let token = jwt.sign(user.toObject(), process.env.SECRET)
 					res.json({
           message:'You are logged in',
           token: token
