@@ -11,7 +11,7 @@ module.exports = (req, res) => {
     } else {
       req.body.password = encrypted
       db_user.create(req.body).then((user) => {
-        let token = jwt.sign(user.toObject(), process.env.SECERT)
+        let token = jwt.sign(user.toObject(), process.env.SECRET)
     		res.status(200).json({
           message: "you are sign up",
           token: token
