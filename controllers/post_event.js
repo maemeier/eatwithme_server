@@ -68,7 +68,7 @@ module.exports = (req, res) => {
 	console.log('>>>>> CREATING EVENT');
   let token = req.headers.authorization.split(" ")[1];
 	console.log('>>>>> token', token);
-  jwt.verify(token, "fyni", (err, decoded) => {
+  jwt.verify(token, process.env.SECRET, (err, decoded) => {
 		console.log('>>>>> verified');
     if (decoded) {
       console.log(">>>>> decoded", decoded);
