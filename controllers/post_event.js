@@ -67,23 +67,25 @@ const create_event = body => {
 module.exports = (req, res) => {
 	console.log('>>>>> CREATING EVENT');
   let token = req.headers.authorization.split(" ")[1];
+	console.log('>>>>> token', token);
   jwt.verify(token, "fyni", (err, decoded) => {
+		console.log('>>>>> verified');
     if (decoded) {
-      console.log("decoded", decoded);
+      console.log(">>>>> decoded", decoded);
       req.body.author = decoded._id;
-			console.log("req body author", req.body.author);
+			console.log(">>>>> req.body.author", req.body.author);
       req.body.guests = [];
-			console.log("req body guests", req.body.guests);
+			console.log(">>>>> req.body.guests", req.body.guests);
       req.body.guests.push(decoded._id);
-			console.log("req body guests ", req.body.guests);
+			console.log(">>>>> req.body.guests PUSHED", req.body.guests);
       // file
       if (req.file && req.file != null) {
-        console.log("file", req.file);
+        console.log(">>>>> file", req.file);
         upload_file(req.file)
           .then(file => {
-            console.log("file", file);
+            console.log(">>>>> file uploaded", file);
             req.body.file = file.url;
-            console.log("req.body", req.body);
+            console.log(">>>>> req.body with file", req.body);
             // event with file
             create_event(req.body)
               .then(event => {
@@ -91,21 +93,26 @@ module.exports = (req, res) => {
                 res.send(event);
               })
               .catch(err => {
+								console.log('>>>>> err create_event', err);
                 res.send(err);
               });
           })
           .catch(err => {
+						console.log('>>>>> err upload_file');
             res.send(err);
           });
       } else {
         // event no file
+				console.log('>>>>> no file');
         delete req.body.file;
-        console.log("req.body with no file", req.body);
+        console.log(">>>>> req.body with no file", req.body);
         create_event(req.body)
           .then(event => {
+						console.log('>>>>> event created', event);
             res.send(event);
           })
           .catch(err => {
+						console.log('>>>>> err create_event', err);
             res.send(err);
           });
       }
