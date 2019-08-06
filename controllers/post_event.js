@@ -65,6 +65,7 @@ const create_event = body => {
 };
 
 module.exports = (req, res) => {
+	console.log('>>>>> CREATING EVENT');
   let token = req.headers.authorization.split(" ")[1];
   jwt.verify(token, "fyni", (err, decoded) => {
     if (decoded) {
