@@ -24,7 +24,8 @@ const db_restaurant = db.model("restaurant", {
     type: String
   },
   file: {
-    type: String
+    type: String,
+		default: "https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg"
   },
   city: {
     type: String

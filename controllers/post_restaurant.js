@@ -19,8 +19,6 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_SECRET
 });
 
-// upload
-
 const upload_file = file => {
   return new Promise(function(resolve, reject) {
     let uri = create_uri(file).content;
@@ -36,6 +34,8 @@ const upload_file = file => {
       });
   });
 };
+
+
 
 const create_restaurant = body => {
   return new Promise(function(resolve, reject) {
@@ -64,28 +64,29 @@ const create_restaurant = body => {
 };
 
 module.exports = (req, res) => {
-  // token
   let token = req.headers.authorization.split(" ")[1];
-  console.log("token", token);
-  console.log("req.body", req.body);
-  console.log("req.file", req.file);
-  jwt.verify(token, process.env.SECRET, (err, decoded) => {
-    if (err) {
-      console.log("err", err);
-    } else if (decoded) {
+  jwt.verify(token, "fyni", (err, decoded) => {
+    if (decoded._id === '5d4841b0b5e91e1fe84b0407') {
       console.log("decoded", decoded);
+			console.log('decode', decoded._id);
       req.body.author = decoded._id;
+			// console.log("req body author", req.body.author);
+      req.body.guests = [];
+			// console.log("req body guests", req.body.guests);
+      req.body.guests.push(decoded._id);
+			// console.log("req body guests ", req.body.guests);
       // file
       if (req.file && req.file != null) {
         console.log("file", req.file);
         upload_file(req.file)
           .then(file => {
-            console.log("file", file);
+            // console.log("file", file);
             req.body.file = file.url;
-            // message with file
+            // console.log("req.body", req.body);
+            // event with file
             create_restaurant(req.body)
               .then(restaurant => {
-                console.log("restaurant", restaurant);
+                // console.log("event", restaurant);
                 res.send(restaurant);
               })
               .catch(err => {
@@ -96,17 +97,20 @@ module.exports = (req, res) => {
             res.send(err);
           });
       } else {
-        // message no file
+        // event no file
         delete req.body.file;
-        console.log("req.body", req.body);
-        create_restaurant(req.body)
-          .then(restaurant => {
-            res.send(restaurant);
+        console.log("req.body with no file", req.body);
+        create_event(req.body)
+          .then(event => {
+            res.send(event);
           })
           .catch(err => {
             res.send(err);
           });
       }
-    }
+    } else {
+			console.log('sorry you are not an admin and cannot create a restaurant');
+			res.send('not an admin')
+		}
   });
 };

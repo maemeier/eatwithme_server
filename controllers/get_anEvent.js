@@ -6,6 +6,7 @@ module.exports = (req,res)=>{
     path: 'author',
     name: 'name title'
   }).then((event)=>{
+		console.log(event);
     res.send(event)
   }).catch((err) => {
     res.send(err)
