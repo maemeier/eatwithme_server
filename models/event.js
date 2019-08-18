@@ -31,6 +31,10 @@ const db_event = db.model("event", {
     type: String,
     required: true
   },
+	sponser:{
+		type: String,
+
+	},
   country: {
     type: String,
     required: true
